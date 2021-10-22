@@ -1,0 +1,28 @@
+server:
+  port: 3000
+
+spring:
+  devtools: # 수정하면 바로 새로고침 devtools (배포할 때 제거)
+    livereload:
+      enabled: true
+  h2:
+    console:
+      enabled: true
+  datasource:
+    hikari:
+      driver-class-name: org.h2.Driver
+      username: sa
+      password:
+      jdbc-url: jdbc:h2:tcp://localhost/~/test
+      connection-test-query: SELECT 1
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql : true
+
+logging:
+  level:
+    com.followproject: debug
