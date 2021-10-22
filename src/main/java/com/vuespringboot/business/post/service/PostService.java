@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -20,5 +22,9 @@ public class PostService {
     public Post getById(Long id){
         return postRepository.findById(id)
                              .orElseThrow(() -> new IllegalArgumentException("찾을 수 없습니다."));
+    }
+
+    public List<Post> getAll(){
+        return postRepository.findAll();
     }
 }

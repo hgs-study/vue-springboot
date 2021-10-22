@@ -9,8 +9,10 @@
         <ul>
            <li>
              <router-link to="/post/input">PostInput</router-link>
+           </li>
+           <li>
              <router-link to="/post/list">PostList</router-link>
-            </li>
+           </li>
         </ul>
       </div>
 

@@ -5,6 +5,8 @@ import com.vuespringboot.business.post.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequestMapping("/api")
 @RestController
 @RequiredArgsConstructor
@@ -20,5 +22,10 @@ public class PostController {
     @GetMapping("/post/{id}")
     public Post getById(@PathVariable Long id){
         return postService.getById(id);
+    }
+
+    @GetMapping("/posts")
+    public List<Post> getAll(){
+        return postService.getAll();
     }
 }
