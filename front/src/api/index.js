@@ -7,7 +7,11 @@ const config ={
 function registerPost(post){
     return axios.post(`${config.baseUrl}post`, post);
 }
+function findPosts(){
+    return axios.get(`${config.baseUrl}posts`);
+}
 
 export {
     registerPost,
+    findPosts
 }

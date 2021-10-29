@@ -13,6 +13,7 @@ export const store = new Vuex.Store({
             title : '',
             content : ''
         },
+        posts : [],
         list : [],
         message : {},
     },
@@ -20,6 +21,9 @@ export const store = new Vuex.Store({
         responseMessage(state){
             return state.message;
         },
+        findPosts(state){
+            return state.posts;
+        }
     },
     mutations,
     actions,

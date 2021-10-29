@@ -6,7 +6,7 @@ import PostList from 'POST/List.vue'
 
 Vue.use(VueRouter)
 
-const router = new VueRouter({
+export const router = new VueRouter({
     mode : 'history',
     routes : [
         {
@@ -19,5 +19,3 @@ const router = new VueRouter({
         }
     ]
 })
-
-export default router

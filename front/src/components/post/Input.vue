@@ -18,7 +18,6 @@
           <span v-if="responseMessage.length">
              {{responseMessage}}
           </span>
-
       </div>
   </div>
 </template>

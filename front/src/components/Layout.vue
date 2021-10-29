@@ -10,7 +10,7 @@
           <slot name="content"></slot>
       </section>
       <footer>
-          <slot nmae="footer"></slot>
+          <slot name="footer"></slot>
       </footer>
   </div>
 </template>

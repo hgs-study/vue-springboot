@@ -1,44 +1,45 @@
 <template>
   <div id ="app">
-      <div v-for="item in list" :key="item.id">
-          <div>
-              {{item.id}}
-          </div>
-          <div>
-              {{item.title}}
-          </div>
-          <div>
-              {{item.content}}
-          </div>
+      <div v-if="findPosts.length">
+        <div v-for="post in findPosts" :key="post.id">
+            {{post.id}} ||
+            {{post.title}} ||
+            {{post.content}}
+        </div>
       </div>
   </div>
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+
 export default {
     name : "PostList",
     created(){
-        this.fetchData()
+        this.$store.dispatch('FIND_POSTS');
     },
-    data (){
-        return {
-            selected : false,
-            list : [],
-            item : null
-        }
+    computed : {
+        ...mapGetters(['findPosts']),
     },
-    methods : {
-        fetchData(){
-            this.$axios.get("/api/posts")
-            .then(response => {
-                this.list = response.data;
-                console.log(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            })
-        }
-    }
+    // data (){
+    //     return {
+    //         selected : false,
+    //         list : [],
+    //         item : null
+    //     }
+    // },
+    // methods : {
+    //     fetchData(){
+    //         this.$axios.get("/api/posts")
+    //         .then(response => {
+    //             this.list = response.data;
+    //             console.log(response.data);
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //         })
+    //     }
+    // }
             
 
 }
