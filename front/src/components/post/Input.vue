@@ -12,15 +12,20 @@
               <textarea class="form-control" v-model="post.content" rows="10"></textarea>
           </div>
           <div class="form-group">
-              <button @click="save">저장</button>
+              <button @click="registerPost()">저장</button>
               <button @click="$router.back()">돌아가기</button>
           </div>
+          <span v-if="responseMessage.length">
+             {{responseMessage}}
+          </span>
 
       </div>
   </div>
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+
 export default {
     name : "PostInput",
     data() {
@@ -33,17 +38,25 @@ export default {
             }
         }
     },
+    computed : {
+        ...mapGetters(['responseMessage'])
+    },
     methods : {
-        save : function(){
-            this.$axios.post('http://localhost:3000/api/post', this.post)
-            .then(() =>{
-                this.$router.push('/post')
-            })
-            .catch((ex) =>{
-                console.error("failed write article", ex);
-            })
+        registerPost(){
+            this.$store.dispatch('REGISTER_POST', this.post);
         }
     }
+    // methods : {
+    //     save : function(){
+    //         this.$axios.post('http://localhost:3000/api/post', this.post)
+    //         .then(() =>{
+    //             this.$router.push('/post')
+    //         })
+    //         .catch((ex) =>{
+    //             console.error("failed write article", ex);
+    //         })
+    //     }
+    // }
 }
 </script>
 

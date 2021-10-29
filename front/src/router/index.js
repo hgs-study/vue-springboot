@@ -9,8 +9,14 @@ Vue.use(VueRouter)
 const router = new VueRouter({
     mode : 'history',
     routes : [
-        {path : '/post/input', component : PostInput},
-        {path : '/post/list', component : PostList}
+        {
+            path : '/post/input',
+            component : PostInput
+        },
+        {
+            path : '/post/list',
+            component : PostList
+        }
     ]
 })
 
