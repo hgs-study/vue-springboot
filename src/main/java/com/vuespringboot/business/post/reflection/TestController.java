@@ -8,7 +8,6 @@ import java.lang.reflect.Method;
 
 @RestController
 public class TestController {
-
     //리플렉션을 이용한 어노테이션 검색
     @GetMapping("/reflection/test")
     public void test() throws NoSuchMethodException {
