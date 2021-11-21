@@ -54,6 +54,7 @@ public class BatchConfig {
     @Bean
     public ItemProcessor<Post,Post> postProcessor(){
         return Post -> {
+//            Post.error();
             Post.update(Post.getId(), Post.getTitle()+"@", Post.getContent());
             return Post;
         };

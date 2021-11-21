@@ -12,7 +12,9 @@ import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteExcep
 import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping("/api")
@@ -30,13 +32,22 @@ public class PostController {
     }
 
     @GetMapping("/post/{id}")
-    public Post getById(@PathVariable Long id){
-        return postService.getById(id);
+    public Post findById(@PathVariable Long id){
+        return postService.findById(id);
     }
 
     @GetMapping("/posts")
-    public List<Post> getAll(){
-        return postService.getAll();
+    public List<Post> findAll(){
+        return postService.findAll();
+    }
+
+    @PostMapping("/posts")
+    public void saveAll(){
+        List<Post> posts = new ArrayList<>();
+        for (int i =1; i <=50 ; i++){
+            posts.add(new Post("title."+i , "content."+i));
+        }
+        postService.saveAll(posts);
     }
 
     @GetMapping("/batchTest")
