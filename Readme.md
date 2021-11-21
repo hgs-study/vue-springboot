@@ -28,4 +28,5 @@
 ```
   https://jojoldu.tistory.com/326
   https://www.fwantastic.com/2019/12/spring-batch-2-metadata-jobrepository.html
+  https://ahndy84.tistory.com/24
 ```
