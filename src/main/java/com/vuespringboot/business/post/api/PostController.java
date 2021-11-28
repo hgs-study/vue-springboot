@@ -36,28 +36,33 @@ public class PostController {
         return postService.findById(id);
     }
 
+    @GetMapping("/post/title/{title}")
+    public Post findByTitle(@PathVariable String title){
+        return postService.findByTitle(title);
+    }
+
     @GetMapping("/posts")
     public List<Post> findAll(){
         return postService.findAll();
     }
 
-    @PostMapping("/posts")
-    public void saveAll(){
-        List<Post> posts = new ArrayList<>();
-        for (int i =1; i <=50 ; i++){
-            posts.add(new Post("title."+i , "content."+i));
-        }
-        postService.saveAll(posts);
-    }
+//    @PostMapping("/posts")
+//    public void saveAll(){
+//        List<Post> posts = new ArrayList<>();
+//        for (int i =1; i <=50 ; i++){
+//            posts.add(new Post("title."+i , "content."+i));
+//        }
+//        postService.saveAll(posts);
+//    }
 
-    @GetMapping("/batchTest")
-    public void batchTest() throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
-        jobLauncher.run(
-                batchConfig.postJob(),
-                new JobParametersBuilder()
-                        .addString("job.name","postJob")
-                        .addString("version", LocalDateTime.now().toString())
-                        .toJobParameters()
-        );
-    }
+//    @GetMapping("/batchTest")
+//    public void batchTest() throws JobParametersInvalidException, JobExecutionAlreadyRunningException, JobRestartException, JobInstanceAlreadyCompleteException {
+//        jobLauncher.run(
+//                batchConfig.postJob(),
+//                new JobParametersBuilder()
+//                        .addString("job.name","postJob")
+//                        .addString("version", LocalDateTime.now().toString())
+//                        .toJobParameters()
+//        );
+//    }
 }

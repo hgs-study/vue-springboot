@@ -1,10 +1,14 @@
 package com.vuespringboot.business.post.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.vuespringboot.business.user.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
+import static javax.persistence.FetchType.LAZY;
 
 @Getter
 @NoArgsConstructor
@@ -20,6 +24,11 @@ public class Post {
 
     @Column(name = "content")
     private String content;
+
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "user_id")
+    @JsonBackReference
+    private User user;
 
     public Post(String title, String content) {
         this.title = title;
