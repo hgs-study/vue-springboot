@@ -8,6 +8,10 @@
               <input type="text" class="form-control" v-model="post.title">
           </div>
           <div class="form-group">
+              <p>이름</p>
+              <input type="text" class="form-control" v-model="post.userName">
+          </div>
+          <div class="form-group">
               <p>내용</p>
               <textarea class="form-control" v-model="post.content" rows="10"></textarea>
           </div>
@@ -33,7 +37,8 @@ export default {
                 message : '',
                 id : '',
                 title : '',
-                content : ''
+                content : '',
+                userName : ''
             }
         }
     },
@@ -59,6 +64,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.form-control{
+    border : 1px solid;
+}
 </style>

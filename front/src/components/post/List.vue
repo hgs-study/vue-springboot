@@ -4,7 +4,8 @@
         <div v-for="post in findPosts" :key="post.id">
             {{post.id}} ||
             {{post.title}} ||
-            {{post.content}}
+            {{post.content}} ||
+            {{post.userName}}
         </div>
       </div>
   </div>
