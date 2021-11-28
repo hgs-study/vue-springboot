@@ -1,6 +1,11 @@
 package com.vuespringboot.business.post.api;
 
+import com.querydsl.core.Tuple;
 import com.vuespringboot.business.post.entity.Post;
+import com.vuespringboot.business.post.facade.PostFacade;
+import com.vuespringboot.business.post.form.PostForm;
+import com.vuespringboot.business.post.form.PostForm.Request.Add;
+import com.vuespringboot.business.post.form.PostForm.Response.Find;
 import com.vuespringboot.business.post.service.PostService;
 import com.vuespringboot.common.config.BatchConfig;
 import lombok.RequiredArgsConstructor;
@@ -24,11 +29,11 @@ public class PostController {
     private final PostService postService;
     private final BatchConfig batchConfig;
     private final JobLauncher jobLauncher;
+    private final PostFacade postFacade;
 
     @PostMapping("/post")
-    public String register(@RequestBody Post post){
-        Post savedPost = postService.save(post);
-        return savedPost.getTitle() + "의 글이 포스팅되었습니다.";
+    public String register(@RequestBody Add add){
+        return postFacade.registerPost(add);
     }
 
     @GetMapping("/post/{id}")
@@ -42,7 +47,7 @@ public class PostController {
     }
 
     @GetMapping("/posts")
-    public List<Post> findAll(){
+    public List<Find> findAll(){
         return postService.findAll();
     }
 

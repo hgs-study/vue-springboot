@@ -1,6 +1,9 @@
 package com.vuespringboot.business.post.service;
 
+import com.querydsl.core.Tuple;
 import com.vuespringboot.business.post.entity.Post;
+import com.vuespringboot.business.post.form.PostForm;
+import com.vuespringboot.business.post.form.PostForm.Response.Find;
 import com.vuespringboot.business.post.repository.PostQueryRepository;
 import com.vuespringboot.business.post.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
@@ -12,7 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -34,9 +39,15 @@ public class PostService {
                              .orElseThrow(() -> new IllegalArgumentException("찾을 수 없습니다."));
     }
 
-    public List<Post> findAll(){
-        return postRepository.findAll();
+    public List<Find> findAll(){
+        return postQueryRepository.findAllJoinFetch();
+//        return postQueryRepository.findAllJoinFetch().stream()
+//                             .map(Find::of)
+//                             .collect(Collectors.toList());
     }
+//    public List<Post> findAll(){
+//        return postRepository.findAll();
+//    }
 
     public Post findByTitle(String title){
         return postQueryRepository.findByTitle(title);
