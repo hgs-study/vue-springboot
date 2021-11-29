@@ -1,23 +1,17 @@
 package com.vuespringboot.business.post.service;
 
-import com.querydsl.core.Tuple;
 import com.vuespringboot.business.post.entity.Post;
-import com.vuespringboot.business.post.form.PostForm;
 import com.vuespringboot.business.post.form.PostForm.Response.Find;
 import com.vuespringboot.business.post.repository.PostQueryRepository;
 import com.vuespringboot.business.post.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.jdbc.core.BatchPreparedStatementSetter;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -44,6 +38,10 @@ public class PostService {
 //        return postQueryRepository.findAllJoinFetch().stream()
 //                             .map(Find::of)
 //                             .collect(Collectors.toList());
+    }
+
+    public Page<Find> findPageAll(Pageable pageable){
+        return postQueryRepository.findPageAllJoinFetch(pageable);
     }
 //    public List<Post> findAll(){
 //        return postRepository.findAll();

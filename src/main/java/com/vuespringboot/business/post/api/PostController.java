@@ -15,6 +15,11 @@ import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.batch.core.repository.JobRestartException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -49,6 +54,11 @@ public class PostController {
     @GetMapping("/posts")
     public List<Find> findAll(){
         return postService.findAll();
+    }
+
+    @GetMapping("/posts/paging")
+    public Page<Find> findPageAll(@PageableDefault(size = 10,sort = "post_id",direction = Sort.Direction.DESC)Pageable pageable){
+        return postService.findPageAll(pageable);
     }
 
 //    @PostMapping("/posts")
