@@ -3,7 +3,17 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     // querydsl
     id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+//    id 'com.moowork.node' version '1.3.1'
+    id "com.github.node-gradle.node" version "3.1.0" // <--- 추가
     id 'java'
+}
+
+node {
+    version = '14.15.4'
+    npmVersion = '6.14.10'
+    workDir = file('./front')
+    npmWorkDir = file('./front')
+    nodeModulesDir = file('./front')
 }
 
 group = 'com'
@@ -33,6 +43,21 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
+
+//node task
+task setup(type: NpmTask){
+    description = 'Install nodejs packages'
+    args = ['install']
+    inputs.files file('package.json')
+    outputs.files file('node_modules')
+}
+
+task buildFront(type: NpmTask, dependsOn: setup){
+    description = 'Build vue.js'
+    args = ['run','build']
+}
+//build시 테스크를 직접 지정하도록 함
+processResources.dependsOn 'buildFront'
 
 test {
     useJUnitPlatform()
