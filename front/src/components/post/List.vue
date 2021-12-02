@@ -7,13 +7,21 @@
             {{post.content}} ||
             {{post.userName}}
         </div>
-      </div>
+      </div>ddssddddddasdasd
         <div class="text-center">
         <v-pagination
             v-model="currentPage"
             :length="findPosts.totalPages"
             @page-click="pageClick"
         ></v-pagination>
+
+          <el-pagination
+              background
+              layout="prev, pager, next"
+              :total="findPosts.totalElements"
+              :page-size="findPosts.size"
+              @current-change="pageClick">
+          </el-pagination>
         </div>
   </div>
 </template>
@@ -28,11 +36,6 @@ export default {
             currentPage : 1
         }
     },
-    watch:{
-        findPosts(newMsg) {
-            console.log("watch : " + newMsg);
-        }
-    },
     created(){
         this.$store.dispatch('FIND_POSTS',this.currentPage);
     },
@@ -40,9 +43,8 @@ export default {
         ...mapGetters(['findPosts']),
     },
 	methods: {
-			pageClick: function (){
-                console.log("test");
-                this.$store.dispatch('FIND_POSTS',this.currentPage);
+			pageClick: function (val){
+        this.$store.dispatch('FIND_POSTS',val);
 			},
 	}
     // data (){

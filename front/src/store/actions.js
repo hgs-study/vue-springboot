@@ -6,7 +6,8 @@ export default{
         commit('REGISTER_POST',response.data);
         return response;
     },
-    async FIND_POSTS({commit,page}){
+    async FIND_POSTS({commit},page){
+        console.log("action="+page);
         const response = await findPosts(page);
         commit('FIND_POSTS',response.data);
         return response;

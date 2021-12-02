@@ -8,7 +8,7 @@ function registerPost(post){
     return axios.post(`${config.baseUrl}post`, post);
 }
 function findPosts(page){
-    return axios.get(`${config.baseUrl}posts/paging?page=`+page);
+    return axios.get(`${config.baseUrl}posts/paging?page=`+(page-1));
 }
 
 export {

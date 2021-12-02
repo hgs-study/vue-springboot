@@ -57,7 +57,7 @@ task buildFront(type: NpmTask, dependsOn: setup){
     args = ['run','build']
 }
 //build시 테스크를 직접 지정하도록 함
-processResources.dependsOn 'buildFront'
+//processResources.dependsOn 'buildFront'
 
 test {
     useJUnitPlatform()
