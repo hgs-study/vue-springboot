@@ -1,20 +1,31 @@
 <template>
   <div id ="app">
-      <div v-if="findPosts.content">
-        <div v-for="post in findPosts.content" :key="post.id">
-            {{post.id}} ||
-            {{post.title}} ||
-            {{post.content}} ||
-            {{post.userName}}
-        </div>
-      </div>ddssddddddasdasd
+    <h1>Post List</h1>
+    <el-table
+        :data="findPosts.content"
+        style="width: auto">
+      <el-table-column
+          prop="id"
+          label="번호"
+          width="180">
+      </el-table-column>
+      <el-table-column
+          prop="title"
+          label="제목"
+          width="180">
+      </el-table-column>
+      <el-table-column
+          prop="content"
+          label="내용"
+          width="180">
+      </el-table-column>
+      <el-table-column
+          prop="userName"
+          label="이름"
+          width="180">
+      </el-table-column>
+    </el-table>
         <div class="text-center">
-        <v-pagination
-            v-model="currentPage"
-            :length="findPosts.totalPages"
-            @page-click="pageClick"
-        ></v-pagination>
-
           <el-pagination
               background
               layout="prev, pager, next"

@@ -16,6 +16,7 @@ export const store = new Vuex.Store({
         posts : [],
         list : [],
         message : {},
+        users : []
     },
     getters : {
         responseMessage(state){
@@ -23,6 +24,9 @@ export const store = new Vuex.Store({
         },
         findPosts(state){
             return state.posts;
+        },
+        findUsers(state){
+            return state.users;
         }
     },
     mutations,

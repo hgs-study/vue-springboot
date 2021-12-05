@@ -5,19 +5,25 @@
           <input type="hidden" v-model="post.id">
           <div class="form-group">
               <p>제목</p>
-              <input type="text" class="form-control" v-model="post.title">
+            <el-input class="input" placeholder="Please enter title" v-model="post.title"></el-input>
           </div>
           <div class="form-group">
               <p>이름</p>
-              <input type="text" class="form-control" v-model="post.userName">
+             <el-input class="input" placeholder="Please enter title" v-model="post.userName"></el-input>
           </div>
           <div class="form-group">
               <p>내용</p>
-              <textarea class="form-control" v-model="post.content" rows="10"></textarea>
+            <el-input
+                type="textarea"
+                :rows="10"
+                placeholder="Please input"
+                v-model="post.content">
+            </el-input>
           </div>
           <div class="form-group">
-              <button @click="registerPost()">저장</button>
-              <button @click="$router.back()">돌아가기</button>
+            <el-button
+                type="primary"
+                @click="registerPost">저장</el-button>
           </div>
           <span v-if="responseMessage.length">
              {{responseMessage}}
@@ -67,5 +73,6 @@ export default {
 <style scoped>
 .form-control{
     border : 1px solid;
+    width: 80%;
 }
 </style>

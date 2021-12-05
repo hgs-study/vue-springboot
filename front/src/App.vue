@@ -59,8 +59,11 @@ export default {
   data: () => ({  
         drawer : false,
         items: [
+          { title: 'DashBoard', icon: 'mdi-view-dashboard', to : '/dashboard' },
           { title: 'PostInput', icon: 'mdi-view-dashboard', to : '/post/input' },
           { title: 'PostList', icon: 'mdi-image', to : '/post/list' },
+          { title: 'userInput', icon: 'mdi-image', to : '/user/input' },
+          { title: 'userList', icon: 'mdi-image', to : '/user/list' },
           { title: 'VuetifyPractice', icon: 'mdi-help-box', to :'/vuetify/practice' },
         ],
         right: null,

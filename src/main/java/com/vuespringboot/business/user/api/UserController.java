@@ -18,7 +18,7 @@ public class UserController {
     @PostMapping("/user")
     public String save(@RequestBody User user){
         final User savedUser = userService.save(user);
-        return savedUser.getName() + " 저장";
+        return savedUser.getName() + " 저장되었습니다.";
     }
 
     @GetMapping("/users")
