@@ -1,4 +1,4 @@
-import {findPosts, registerPost, registerUser,findUsers} from '../api/index.js';
+import {findPosts, registerPost, registerUser,findUsers,removeUser} from '../api/index.js';
 
 export default{
     async REGISTER_POST({commit},post){
@@ -15,11 +15,17 @@ export default{
     async REGISTER_USER({commit},user){
         const response = await registerUser(user);
         commit('REGISTER_USER',response.data);
+        console.log(response.data);
         return response;
     },
     async FIND_USERS({commit}){
         const response = await findUsers();
         commit('FIND_USERS',response.data);
+        return response;
+    },
+    async REMOVE_USER({commit},user){
+        const response = await removeUser(user);
+        commit('REMOVE_USER',response.data);
         return response;
     },
 } 

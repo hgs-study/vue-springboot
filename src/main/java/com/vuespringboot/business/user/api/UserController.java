@@ -16,17 +16,24 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/user")
-    public String save(@RequestBody User user){
-        final User savedUser = userService.save(user);
-        return savedUser.getName() + " 저장되었습니다.";
+    public User save(@RequestBody User user){
+        return userService.save(new User(user.getName(), true));
     }
 
     @GetMapping("/users")
     public List<Find> findAll(){
         return userService.findAll();
     }
+
     @GetMapping("/users/fetch")
     public List<User> findAllJoinFetch(){
         return userService.findAllJoinFetch();
+    }
+
+    @DeleteMapping("/user")
+    public String deleteUser(@RequestBody User user){
+        final User findUser = userService.findByName(user.getName());
+        userService.delete(findUser);
+        return findUser.getName()+"이 삭제되었습니다.";
     }
 }

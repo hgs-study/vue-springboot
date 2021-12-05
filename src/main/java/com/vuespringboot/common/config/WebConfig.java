@@ -10,7 +10,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("*")
-                .allowedMethods("GET","POST");
+                .allowedMethods("GET","POST","DELETE","PUT");
 
 //        Credentioals를 true로 주면 모든 Origin을 allow하면 안된다. 특정해야할것
 //        maxAge(86400) - 캐시를 주면 preflight 가 요청 보내는 것을 캐싱할 수 있다. 이 설정을 안 하면 요청을 2번 보내기 때문

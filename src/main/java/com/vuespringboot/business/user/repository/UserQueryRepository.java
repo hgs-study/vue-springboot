@@ -22,6 +22,7 @@ public class UserQueryRepository {
                 .selectFrom(user)
                 .leftJoin(user.posts,post)
                 .fetchJoin()
+                .where(user.isActive.eq(Boolean.TRUE))
                 .distinct()
                 .fetch();
     }

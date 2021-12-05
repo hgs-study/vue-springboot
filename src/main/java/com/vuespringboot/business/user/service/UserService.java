@@ -32,4 +32,11 @@ public class UserService {
     public List<User> findAllJoinFetch(){
         return userQueryRepository.findAllJoinFetch();
     }
+    public User findByName(String name){
+        return userRepository.findByName(name);
+    }
+    @Transactional
+    public void delete(User user){
+        user.delete();
+    }
 }

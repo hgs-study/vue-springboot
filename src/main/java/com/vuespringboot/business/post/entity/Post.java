@@ -30,6 +30,9 @@ public class Post {
     @JsonBackReference
     private User user;
 
+    @Column(name = "is_active")
+    private boolean isActive;
+
     public Post(String title, String content, User user) {
         this.title = title;
         this.content = content;

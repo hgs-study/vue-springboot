@@ -25,8 +25,8 @@
                 type="primary"
                 @click="registerPost">저장</el-button>
           </div>
-          <span v-if="responseMessage.length">
-             {{responseMessage}}
+          <span v-if="postSaveMessage.length">
+             {{postSaveMessage}}
           </span>
       </div>
   </div>
@@ -49,7 +49,7 @@ export default {
         }
     },
     computed : {
-        ...mapGetters(['responseMessage'])
+        ...mapGetters(['postSaveMessage'])
     },
     methods : {
         registerPost(){

@@ -9,7 +9,7 @@
                 type="primary"
                 @click="registerUser">생성</el-button>
         </div>
-        <div v-if="responseMessage.length">{{responseMessage}}</div>
+        <div v-if="userSaveMessage.length">{{userSaveMessage}}</div>
     </div>
 </template>
 
@@ -26,7 +26,7 @@ export default {
         }
     },
     computed : {
-      ...mapGetters(['responseMessage'])
+      ...mapGetters(['userSaveMessage'])
     },
     methods : {
       registerUser(){

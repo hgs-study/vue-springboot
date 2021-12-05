@@ -15,12 +15,29 @@ export const store = new Vuex.Store({
         },
         posts : [],
         list : [],
-        message : {},
+        message : {
+            user : {
+                save : '',
+                remove : '',
+                modify : ''
+            },
+            post : {
+                save : '',
+                remove : '',
+                modify : ''
+            }
+        },
         users : []
     },
     getters : {
-        responseMessage(state){
-            return state.message;
+        userSaveMessage(state){
+            return state.message.user.save;
+        },
+        userRemoveMessage(state){
+            return state.message.user.remove;
+        },
+        postSaveMessage(state){
+            return state.message.post.save;
         },
         findPosts(state){
             return state.posts;

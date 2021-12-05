@@ -2,8 +2,6 @@ package com.vuespringboot.business.user.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.vuespringboot.business.post.entity.Post;
-import com.vuespringboot.business.user.form.UserForm;
-import com.vuespringboot.business.user.form.UserForm.Response.Find;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -27,7 +25,19 @@ public class User {
     @JsonManagedReference
     private List<Post> posts = new ArrayList<>();
 
+    @Column(name = "is_active")
+    private boolean isActive;
+
     public User(String name) {
         this.name = name;
+    }
+
+    public User(String name, boolean isActive) {
+        this.name = name;
+        this.isActive = isActive;
+    }
+
+    public void delete(){
+        this.isActive = false;
     }
 }
